@@ -169,6 +169,87 @@ h1 { margin: 0; font-size: 18px; letter-spacing: -.3px; }
   .difficulty { display: none; }
 }
 
-@media (orientation: portrait) {
-  .app-shell::before { content: 'Rotate your iPad for the full piano view'; position: fixed; z-index: 20; inset: 0; display: grid; place-items: center; padding: 30px; text-align: center; background: #0a0c12; font-size: 22px; font-weight: 750; }
+@media (max-width: 600px) {
+  body { overflow-y: auto; }
+  .app-shell {
+    min-height: 100dvh;
+    padding: max(10px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
+    grid-template-rows: auto 430px auto;
+    align-content: start;
+  }
+
+  header { align-items: center; min-height: 44px; }
+  .brand { gap: 8px; }
+  .brand-mark { width: 36px; height: 36px; border-radius: 11px; font-size: 12px; }
+  h1 { font-size: 15px; }
+  .status-row { gap: 6px; }
+  .mode-toggle { padding: 5px 6px 5px 8px; font-size: 10px; }
+  .mode-toggle span { margin-left: 4px; padding: 3px 5px; }
+  .icon-button { width: 34px; height: 34px; }
+
+  .stage { min-height: 0; height: 430px; border-radius: 16px; }
+  .hit-label { top: 10px; font-size: 7px; letter-spacing: .8px; }
+  .lesson-readout { top: 9px; right: 10px; display: block; max-width: 115px; text-align: right; }
+  .lesson-readout span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 8px; }
+  .lesson-readout strong { display: block; margin-top: 2px; font-size: 13px; }
+  .lyric-strip { top: 43px; left: 8px; right: 8px; max-width: none; transform: none; justify-content: center; gap: 6px; padding: 5px 8px; font-size: 10px; }
+  .lyric-strip .current { font-size: 15px; }
+  .tone-monitor { left: 10px; right: 10px; bottom: 10px; min-width: 0; padding: 8px 10px; border-radius: 13px; }
+  .tone-pulse { width: 31px; height: 31px; }
+  .tone-values { flex-wrap: wrap; gap: 4px; }
+  .tone-values strong { padding: 2px 5px; font-size: 14px; }
+  .tone-values small { font-size: 7px; }
+
+  .controls { grid-template-columns: 74px minmax(0, 1fr); gap: 10px 14px; padding: 2px 2px 8px; }
+  .progress-copy strong { font-size: 16px; }
+  .speed-control { width: 100%; }
+  .keyboard { grid-column: 1 / -1; width: 100%; height: 74px; overflow: hidden; }
+  .keyboard button { flex: 1 1 0; min-width: 0; padding: 0; font-size: 8px; }
+  .keyboard .black-key { flex: 0 0 24px; min-width: 24px; height: 48px; margin-left: -12px; margin-right: -12px; }
+
+  .splash { overflow-y: auto; padding: max(20px, env(safe-area-inset-top)) 20px max(20px, env(safe-area-inset-bottom)); }
+  .splash-icon { width: 62px; height: 62px; margin-bottom: 20px; border-radius: 19px; font-size: 31px; }
+  .splash h2 { font-size: 34px; line-height: 1.02; }
+  .splash button { width: 100%; min-width: 0; }
+
+  .selection-screen { display: block; }
+  .selection-content { padding-bottom: 18px; }
+  .selection-content > h2 { font-size: 34px; }
+  .selection-intro { margin-bottom: 17px; }
+  .tune-grid { grid-template-columns: 1fr; }
+  .tune-card { min-height: 76px; }
+  .tune-info small { font-size: 10px; }
+
+  .results-screen { display: block; }
+  .results-card { margin: 0 auto; padding: 8px 0 24px; }
+  .result-burst { width: 52px; height: 52px; margin-bottom: 12px; }
+  .results-card h2 { margin-bottom: 13px; font-size: 27px; }
+  .score-ring { width: 132px; height: 132px; margin-bottom: 12px; }
+  .result-stats { margin: 15px 0; }
+  .choose-again, .play-again { width: 100%; }
+
+  .dialog-backdrop { align-items: start; overflow-y: auto; padding: max(10px, env(safe-area-inset-top)) 10px max(10px, env(safe-area-inset-bottom)); }
+  .tutorial-dialog { max-height: none; padding: 23px 18px; border-radius: 18px; }
+  .tutorial-dialog h2 { margin-right: 38px; font-size: 27px; }
+  .dialog-close { top: 14px; right: 14px; }
+  .tutorial-steps { margin: 18px 0 14px; }
+  .tutorial-steps li { padding: 13px; }
+  .prototype-note { align-items: flex-start; flex-direction: column; gap: 7px; }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .app-shell { grid-template-rows: 40px minmax(210px, 1fr) auto; padding-top: max(6px, env(safe-area-inset-top)); padding-bottom: max(6px, env(safe-area-inset-bottom)); gap: 7px; }
+  header { min-height: 40px; }
+  .brand-mark { width: 34px; height: 34px; }
+  .stage { min-height: 210px; }
+  .controls { grid-template-columns: 62px 145px 1fr; gap: 8px; }
+  .controls .hint { display: none; }
+  .keyboard { height: 50px; }
+  .keyboard .black-key { height: 34px; }
+  .tone-monitor { bottom: 8px; padding-top: 6px; padding-bottom: 6px; }
+  .selection-screen { display: block; }
+  .selection-content { margin: 0 auto; }
+  .selection-content > h2 { font-size: 30px; }
+  .selection-intro { margin-bottom: 12px; }
+  .tune-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
