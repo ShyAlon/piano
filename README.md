@@ -16,6 +16,12 @@ npm test
 npm run build
 ```
 
+The repository uses `.githooks/pre-push` to run the complete `npm run check` command before every push. Enable the tracked hooks once per clone with:
+
+```bash
+git config core.hooksPath .githooks
+```
+
 ## GitHub Pages deployment
 
 Every push to `main` runs the tests, builds the Vite app with the repository's Pages base path, and deploys `dist` through GitHub Actions.
